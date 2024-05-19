@@ -57,7 +57,7 @@ Se você tiver dúvidas ou quiser contribuir para o projeto, sinta-se à vontade
 
 Para mais informações, entre em contato:
 
-- Email: [email@example.com](mailto:email@example.com)
-- GitHub: [seu-usuario](https://github.com/seu-usuario)
+- Email: [email@example.com](mailto:contatodoracorde@gmail.com)
+- GitHub: [seu-usuario](https://github.com/anabrandt)
 
 Agradecemos o seu interesse e esperamos que você aproveite ao máximo o Doracorde!
