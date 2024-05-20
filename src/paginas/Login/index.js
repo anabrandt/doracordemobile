@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ImageBackground, StyleSheet, Text, View, TextInput } from 'react-native';
+import { Image, ImageBackground, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import PaginaBase from '../PaginaBase';
 
 
@@ -10,22 +10,13 @@ export default function Login({ navigation }) {
     return (
         <View style={styles.container}>
             <PaginaBase>
-                <ImageBackground
-                    source={require('../../assets/Patas.png')}
-                    style={styles.backgroundImagePatas}
-                    imageStyle={{
-                        height: 200,
-                        left: 250,
-                    }}
-                >
                     <View style={styles.contentContainer}>
-                        <Image source={require('../../assets/Logo-azul.png')} style={styles.imagem} />
                         <Text style={styles.text}>Já tem conta? Faça seu login:</Text>
                         <TextInput
                             style={styles.input}
                             onChangeText={onChangeNome}
                             value={nome}
-                            placeholder='Digite seu nome completo'
+                            placeholder='Digite seu  email'
                             placeholderTextColor={'#BCBCBC'}
                         />
                         <TextInput
@@ -36,11 +27,10 @@ export default function Login({ navigation }) {
                             placeholderTextColor={'#BCBCBC'}
                         />
 
-                        <TouchableOpacity style={styles.button}>
+                        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Tab')}>
                             <Text style={styles.textoBotao}>Entrar</Text>
                         </TouchableOpacity>
                     </View>
-                </ImageBackground>
             </PaginaBase>
         </View>
     );
@@ -52,7 +42,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     text: {
-        color: "#3772FF",
+        color: "black",
         textAlign: 'center',
         fontFamily: 'PoppinsRegular',
         fontSize: 16,
@@ -87,7 +77,7 @@ const styles = StyleSheet.create({
 
     button: {
         borderRadius: 8,
-        backgroundColor: '#FC7071', // Pode ser ajustado conforme necessário
+        backgroundColor: 'black',
         shadowColor: 'rgba(0, 0, 0, 0.12)',
         shadowOffset: {
             width: 2,

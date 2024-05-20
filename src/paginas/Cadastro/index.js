@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ImageBackground, StyleSheet, Text, View, TextInput } from 'react-native';
+import { Image, ImageBackground, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import PaginaBase from '../PaginaBase';
 
 export default function Cadastro() {
@@ -12,7 +12,7 @@ export default function Cadastro() {
         <View style={styles.container}>
             <PaginaBase>
                 <ImageBackground
-                    source={require('../../assets/Patas.png')}
+                    source={require('../../assets/Background_Complete.png')}
                     style={styles.backgroundImagePatas}
                     imageStyle={{
                         height: 200,
@@ -23,7 +23,7 @@ export default function Cadastro() {
                         <Image source={require('../../assets/Logo-azul.png')} style={styles.imagem} />
                         <View>
                             <Text style={styles.text}>Ainda não tem cadastro?</Text>
-                            <Text style={styles.text}>Então, antes de buscar seu melhor amigo, precisamos de alguns dados:</Text>
+                            <Text style={styles.text}>Então, antes de iniciar uma imersão musical, precisamos de alguns dados:</Text>
                         </View>
 
                         <View>
@@ -70,7 +70,7 @@ export default function Cadastro() {
                             />
                         </View>
 
-                        <TouchableOpacity style={styles.button}>
+                        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Tab')}>
                             <Text style={styles.textoBotao}>Cadastrar</Text>
                         </TouchableOpacity>
                     </View>
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     text: {
-        color: "#3772FF",
+        color: "black",
         textAlign: 'center',
         fontFamily: 'PoppinsRegular',
         fontSize: 16,
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
 
     button: {
         borderRadius: 8,
-        backgroundColor: '#FC7071', // Pode ser ajustado conforme necessário
+        backgroundColor: 'black', 
         shadowColor: 'rgba(0, 0, 0, 0.12)',
         shadowOffset: {
             width: 2,
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 1,
         shadowRadius: 4,
         elevation: 4, // Adiciona a elevação para sombra no Android
-        padding: 10, // Pode ser ajustado conforme necessário
+        padding: 10, 
         width: 200,
         alignSelf: 'center',
     },

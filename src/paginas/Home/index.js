@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import PaginaBase from '../PaginaBase';
-export default function Home() {
+export default function Home({navigation }) {
 
     return (
         <View style={styles.container}>
@@ -11,11 +11,11 @@ export default function Home() {
                     <Text style={[styles.text, styles.title]}>Boas-vindas!</Text>
                     <Text style={styles.text}>Música para todos os sentidos: Abraçando a diversidade musical! </Text>
 
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
                         <Text style={styles.textoBotao}>Login</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Cadastro')}>
                         <Text style={styles.textoBotao}>Cadastro</Text>
                     </TouchableOpacity>
 
@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
         width: 180,
         height: 200,
     },
-
     button: {
         borderRadius: 8,
         backgroundColor: 'black', // Pode ser ajustado conforme necessário

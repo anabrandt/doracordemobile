@@ -1,4 +1,4 @@
-import { FlatList, ImageBackground, StyleSheet, Text, View } from "react-native";
+import { Image, FlatList, StyleSheet, Text, View } from "react-native";
 import Card from "./Card";
 import pets from "../../mocks/pets";
 import PaginaBase from "../PaginaBase";
@@ -8,7 +8,8 @@ export default function ListaPets({ navigation }) {
         <View style={styles.container}>
             <PaginaBase>
                 <View style={styles.contentContainer}>
-                    <Text style={styles.text}>Olá! Veja os amigos disponíveis para adoção!</Text>
+                <Image source={require('../../assets/doracorde.png')} style={styles.doracorde} />
+                    <Text style={styles.text}>Olá! Veja as músicas disponíveis para tocar!</Text>
                     <FlatList
                         data={pets}
                         renderItem={({ item }) => <Card {...item}
@@ -32,11 +33,16 @@ const styles = StyleSheet.create({
         zIndex: 1,
     },
     text: {
-        color: "#3772FF",
+        color: "black",
         textAlign: 'center',
         fontFamily: 'PoppinsRegular',
         fontSize: 16,
         fontWeight: '400',
         marginHorizontal: 67
+    },
+    doracorde: {
+        alignSelf: 'center',
+        width: 160,
+        height: 30,
     },
 });

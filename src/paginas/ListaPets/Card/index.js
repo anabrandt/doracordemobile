@@ -1,6 +1,5 @@
 import { Link } from "@react-navigation/native";
-import { Image, StyleSheet, Text, View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function Card({ nome, idade, porte, imagem, caracteristicas, localidade, descricao, navigation }) {
     return (
@@ -9,30 +8,27 @@ export default function Card({ nome, idade, porte, imagem, caracteristicas, loca
                 nome: nome,
                 imagem: imagem,
                 localidade: localidade,
-                descricao: descricao,
+                descricao: descricao
             })}>
-                <Image source={imagem} />
+                <Image source={imagem} style={styles.imagem} />
             </TouchableOpacity>
+
+
             <View style={styles.containerInformacoes}>
                 <Text style={styles.title}>{nome}</Text>
-
                 <View style={styles.informacoes}>
                     <Text style={styles.informacoesTexto}>{idade}</Text>
                     <Text style={styles.informacoesTexto}>{porte}</Text>
-                    <Text style={styles.informacoesTexto}>{caracteristicas}</Text>
                 </View>
 
                 <View style={styles.informacoes}>
-                    <Text style={styles.local}>
-                        {localidade}</Text>
+
                     <View style={styles.containerChat}>
                         <Image source={require('../../../assets/chat.png')} />
                         <Link to={{
-                            screen: 'Mensagem', params: {
-                                nomePet: nome
-                            },
+                            screen: 'Mensagem', 
                         }} style={styles.local}>
-                            Falar com responsável
+                            Clique aqui para tocar 
                         </Link>
                     </View>
                 </View>
@@ -53,14 +49,14 @@ const styles = StyleSheet.create({
         marginBottom: 16
     },
     title: {
-        color: "#3772FF",
+        color: "black",
         fontWeight: "600",
         lineHeight: 24,
         fontSize: 16,
         marginBottom: 8
     },
     informacoesTexto: {
-        color: "#737380",
+        color: "black",
         lineHeight: 20,
         fontSize: 14,
     },
@@ -80,6 +76,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 8,
         alignItems: 'center'
+    },
+    imagem: {
+        alignSelf: 'center',
+        width: 180,
+        height: 200,
     }
-
 })

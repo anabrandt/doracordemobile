@@ -1,69 +1,48 @@
 import React from "react";
-import { StyleSheet, Text, View, TextInput, ScrollView } from "react-native";
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Alert } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import PaginaBase from "../PaginaBase";
 
-export default function Mensagem() {
-    const route = useRoute();
-    const { nomePet } = route.params;
+const PianoKey = ({ color, onPress, label }) => {
+    return (
+        <TouchableOpacity style={[styles.key, { backgroundColor: color }]} onPress={onPress}>
+            {label && <Text style={styles.keyLabel}>{label}</Text>}
+        </TouchableOpacity>
+    );
+};
 
-    const [nome, onChangeNome] = React.useState('');
-    const [telefone, onChangeTelefone] = React.useState('');
-    const [mensagem, onChangeMensagem] = React.useState('');
+export default function Mensagem() {
+    const handlePress = (note) => {
+        Alert.alert(`Você pressionou a nota ${note}`);
+    };
 
     return (
         <View style={styles.container}>
             <ScrollView>
                 <PaginaBase>
                     <View style={styles.contentContainer}>
-                        <Text style={styles.text}>Envie uma mensagem para o tutor:</Text>
-                        <View style={styles.formContainer}>
-                            <View>
-                                <Text style={styles.label}>Nome</Text>
-                                <TextInput
-                                    style={styles.input}
-                                    onChangeText={onChangeNome}
-                                    value={nome}
-                                    placeholder='Digite seu nome completo'
-                                    placeholderTextColor={'#BCBCBC'}
-                                />
+                        <Text style={styles.text}>Que nota é essa</Text>
+                        <View style={styles.progressContainer}>
+                            <View style={styles.progressBar}>
+                                <Text style={styles.progressText}>Notas {'>'} Piano {'>'} Naturais 1</Text>
+                                <Text style={styles.exerciseText}>Exercicio 1</Text>
+                                <Text style={styles.progressPercentage}>67 %</Text>
                             </View>
-
-                            <View>
-                                <Text style={styles.label}>Telefone</Text>
-                                <TextInput
-                                    style={styles.input}
-                                    onChangeText={onChangeTelefone}
-                                    value={telefone}
-                                    placeholder='Insira seu telefone e/ou whatsapp'
-                                    placeholderTextColor={'#BCBCBC'}
-                                />
-                            </View>
-
-                            <View>
-                                <Text style={styles.label}>Nome do animal</Text>
-                                <TextInput
-                                    style={styles.input}
-                                    value={nomePet}
-                                />
-                            </View>
-
-                            <View>
-                                <Text style={styles.label}>Mensagem</Text>
-                                <TextInput
-                                    style={styles.input}
-                                    onChangeText={onChangeMensagem}
-                                    value={mensagem}
-                                    placeholder='Escreva sua mensagem'
-                                    placeholderTextColor={'#BCBCBC'}
-                                    multiline
-                                    numberOfLines={4}
-                                />
-                            </View>
-
-                            <TouchableOpacity style={styles.button}>
-                                <Text style={styles.textoBotao}>Enviar</Text>
-                            </TouchableOpacity>
+                        </View>
+                        
+                        <View style={styles.keyboard}>
+                            <PianoKey color="white" onPress={() => handlePress('C')} label="C" />
+                            <PianoKey color="black" onPress={() => handlePress('C#')} />
+                            <PianoKey color="white" onPress={() => handlePress('D')} label="D" />
+                            <PianoKey color="black" onPress={() => handlePress('D#')} />
+                            <PianoKey color="white" onPress={() => handlePress('E')} label="E" />
+                            <PianoKey color="white" onPress={() => handlePress('F')} label="F" />
+                            <PianoKey color="black" onPress={() => handlePress('F#')} />
+                            <PianoKey color="white" onPress={() => handlePress('G')} label="G" />
+                            <PianoKey color="black" onPress={() => handlePress('G#')} />
+                            <PianoKey color="white" onPress={() => handlePress('A')} label="A" />
+                            <PianoKey color="black" onPress={() => handlePress('A#')} />
+                            <PianoKey color="white" onPress={() => handlePress('B')} label="B" />
                         </View>
                     </View>
                 </PaginaBase>
@@ -78,65 +57,57 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     text: {
-        color: "#3772FF",
+        color: "#000",
         textAlign: 'center',
         fontFamily: 'PoppinsRegular',
-        fontSize: 16,
-        fontWeight: '400',
-        marginHorizontal: 67
+        fontSize: 24,
+        fontWeight: '600',
+        marginTop: 20,
     },
     contentContainer: {
-        gap: 32,
-        paddingTop: 150,
+        alignItems: 'center',
+        paddingTop: 50,
     },
-    formContainer: {
-        backgroundColor: '#F6F6F6',
-        padding: 24,
-        gap: 24,
-        marginHorizontal: 24,
-        marginBottom: 24
-    },
-    label: {
-        color: '#3772FF',
-        fontWeight: "600",
-        fontSize: 16,
-        lineHeight: 24,
-        marginTop: 18,
-        marginBottom: 6
-    },
-    input: {
+    progressContainer: {
+        backgroundColor: '#000',
+        width: '90%',
         borderRadius: 8,
-        backgroundColor: '#FFF',
-        shadowColor: 'rgba(0, 0, 0, 0.05)',
-        shadowOffset: {
-            width: 0,
-            height: 4,
-        },
-        shadowOpacity: 1,
-        shadowRadius: 4,
-        elevation: 4,
-        padding: 12,
+        padding: 10,
+        marginVertical: 20,
     },
-
-    button: {
-        borderRadius: 8,
-        backgroundColor: '#FC7071', // Pode ser ajustado conforme necessário
-        shadowColor: 'rgba(0, 0, 0, 0.12)',
-        shadowOffset: {
-            width: 2,
-            height: 2,
-        },
-        shadowOpacity: 1,
-        shadowRadius: 4,
-        elevation: 4, // Adiciona a elevação para sombra no Android
-        padding: 10, // Pode ser ajustado conforme necessário
-        width: 200,
-        alignSelf: 'center',
+    progressBar: {
+        flexDirection: 'column',
+        alignItems: 'center',
     },
-    textoBotao: {
-        color: 'white',
-        textAlign: 'center',
+    progressText: {
+        color: '#FFF',
         fontSize: 16,
-        fontWeight: '600',
+        marginBottom: 10,
+    },
+    exerciseText: {
+        color: '#FFF',
+        fontSize: 14,
+        marginBottom: 10,
+    },
+    progressPercentage: {
+        color: '#FFF',
+        fontSize: 16,
+    },
+    keyboard: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop: 20,
+    },
+    key: {
+        width: 40,
+        height: 150,
+        margin: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+    },
+    keyLabel: {
+        fontSize: 12,
+        color: '#000',
+        marginBottom: 4,
     },
 });
